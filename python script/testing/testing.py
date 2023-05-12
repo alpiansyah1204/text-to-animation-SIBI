@@ -4,7 +4,6 @@ from moviepy.editor import *
 # import StemmerFactory class
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
-
 list_animation = ["me","masak","apa","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 def animation(word):
@@ -15,15 +14,9 @@ def animation(word):
     for i in word:
         if (i in list_animation):
             i.upper()
-            # print(i)
-            # video.append(i)
             video.append(VideoFileClip(fr'video\{i}.mp4'))
         elif(i == " "):
-            # print("idle")
-            # video.append("iidle")
             video.append(VideoFileClip(fr'video\idle.mp4'))
-
-
     # # join and write 
     result = concatenate_videoclips(video)
     result.write_videofile('combined.mp4',20)
@@ -43,8 +36,9 @@ def hasil(word):
     print(f"{output}  {len(output)}")
 
     hasil = []
-
-    imbuhan = ['ter', 'te', 'se', 'per', 'peng', 'pen', 'pem', 'pe', 'men', 'mem', 'me', 'ke', 'di', 'ber', 'be']
+    imbuhan = ['ter', 'te', 'se', 'per', 'peng', 
+               'pen', 'pem', 'pe', 'men', 'mem', 
+               'me', 'ke', 'di', 'ber', 'be']
     # print(imbuhan)
     for i in range(len(sentence)):
         word = sentence[i]
@@ -63,6 +57,6 @@ def hasil(word):
     return hasil
             
 # print(hasil('Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan'))
-testing = hasil('aku bermain dirumahnya')
+testing = hasil('semangat')
 result =' '.join(map(str, testing))
 animation(result)
